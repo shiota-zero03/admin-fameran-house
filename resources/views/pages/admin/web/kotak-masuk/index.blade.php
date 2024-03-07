@@ -157,20 +157,17 @@
                 var route = "{{ route('admin.web.kotak-masuk.update',':id') }}";
                 route = route.replace(':id', $('#id').val());
 
-                var formData = {
-                    balasan: $('#balasan')
-                }
-
                 $.ajax({
                     url: route,
                     method: "PUT",
-                    data: formData,
+                    data: {
+                        balasan: $('#balasan')
+                    },
                     headers: {
                         'X-CSRF-TOKEN': csrfToken
                     },
                     success: function(response){
                         console.log(response)
-                        // Swal.fire('', response.message, 'success')
                         $('#loading').addClass('d-none')
                     },
                     error: function(error){

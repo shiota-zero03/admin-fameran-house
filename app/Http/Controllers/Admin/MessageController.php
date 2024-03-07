@@ -95,7 +95,7 @@ class MessageController extends Controller
             'message' => $getData->message,
             'institution' => $getData->institution,
             'status' => 'Pending',
-            'response' => $request->input('balasan')
+            'response' => $request->balasan
         ];
         return $request->balasan;
         $this->repo->updateData($data, $id);

@@ -34,17 +34,17 @@ class WebFormController extends Controller
         ];
         $send = Mail::to($request->email)->send(new WebOrderMail($data));
 
-        // $create = $this->repo->createData($data);
-        // if($create){
-        //     return $this->res->successResponse([
-        //         'message' => 'Data send succesfully',
-        //         'data' => $create,
-        //         'code' => 200
-        //     ]);
-        // }
-        // return $this->res->errorResponse([
-        //     'message' => 'Internal server error',
-        //     'code' => 500
-        // ]);
+        $create = $this->repo->createData($data);
+        if($create){
+            return $this->res->successResponse([
+                'message' => 'Data send succesfully',
+                'data' => $create,
+                'code' => 200
+            ]);
+        }
+        return $this->res->errorResponse([
+            'message' => 'Internal server error',
+            'code' => 500
+        ]);
     }
 }
